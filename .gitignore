@@ -1,0 +1,8 @@
+node_modules/
+vendor/
+dist/
+.env
+*.log
+backend/config/config.php
+backend/uploads/*
+!backend/uploads/.gitkeep
