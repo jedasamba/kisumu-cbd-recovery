@@ -6,3 +6,4 @@ dist/
 backend/config/config.php
 backend/uploads/*
 !backend/uploads/.gitkeep
+!backend/uploads/.htaccess
