@@ -3,6 +3,7 @@ require_once __DIR__ . '/../helpers/cors.php';
 require_once __DIR__ . '/../helpers/response.php';
 require_once __DIR__ . '/../helpers/jwt.php';
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../helpers/matching.php';
 
 // Every request to this file needs a valid token
 $auth = requireAuth();
@@ -117,7 +118,11 @@ $insert->execute([
     $type === 'found' ? $hidden : null,
 ]);
 
+$newReportId = (int) $pdo->lastInsertId();
+$matchesFound = runMatching($pdo, $newReportId);
+
 sendJson([
-    'message'   => 'Report submitted successfully',
-    'report_id' => (int) $pdo->lastInsertId(),
+    'message'       => 'Report submitted successfully',
+    'report_id'     => $newReportId,
+    'matches_found' => $matchesFound,
 ], 201);
