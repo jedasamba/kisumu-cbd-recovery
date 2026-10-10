@@ -318,3 +318,172 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+.content.wide-content {
+  max-width: 1100px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.panel {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+th {
+  background: #f3f5f9;
+  font-weight: 600;
+}
+
+td.empty {
+  text-align: center;
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.small-btn {
+  padding: 5px 12px;
+  border: 1px solid #cbd2dc;
+  border-radius: 6px;
+  background: #f3f5f9;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.small-btn.danger {
+  border-color: #e4a5a5;
+  background: #fde8e8;
+  color: #9b1c1c;
+}
+
+.small-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.modal h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+.modal-photo {
+  width: 100%;
+  max-height: 220px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px 12px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+dt {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+dd {
+  margin: 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+@media (max-width: 800px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}

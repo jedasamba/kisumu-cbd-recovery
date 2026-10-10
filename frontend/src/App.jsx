@@ -3,6 +3,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ReportForm from './pages/ReportForm'
+import AdminDashboard from './pages/AdminDashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         path="/admin"
         element={
           <ProtectedRoute role="admin">
-            <p style={{ padding: '2rem' }}>Admin dashboard coming soon.</p>
+            <AdminDashboard />
           </ProtectedRoute>
         }
       />
