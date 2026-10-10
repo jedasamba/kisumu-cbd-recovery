@@ -16,3 +16,20 @@ export async function apiPost(endpoint, body, token) {
   const data = await response.json()
   return { ok: response.ok, status: response.status, data }
 }
+
+// Sends a form with files (FormData). The browser sets the Content-Type itself.
+export async function apiPostForm(endpoint, formData, token) {
+  const headers = {}
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
+  }
+
+  const response = await fetch(`${API_URL}/${endpoint}`, {
+    method: 'POST',
+    headers,
+    body: formData,
+  })
+
+  const data = await response.json()
+  return { ok: response.ok, status: response.status, data }
+}

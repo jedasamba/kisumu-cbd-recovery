@@ -160,3 +160,74 @@ a {
   margin-top: 0;
   padding: 10px 16px;
 }
+.page.top {
+  align-items: flex-start;
+}
+
+.card.wide {
+  max-width: 560px;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd2dc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #ffffff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 8px;
+  border: 1px solid #1a73e8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #ffffff;
+  color: #1a73e8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1a73e8;
+  color: #ffffff;
+}
+
+.counter {
+  margin: 4px 0 0;
+  text-align: right;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.hint {
+  margin: 6px 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.map {
+  height: 280px;
+  width: 100%;
+  border-radius: 6px;
+  z-index: 0;
+}
+
+.coords {
+  display: flex;
+  gap: 8px;
+}

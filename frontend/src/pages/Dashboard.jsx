@@ -25,7 +25,10 @@ function Dashboard() {
       <main className="content">
         <div className="content-header">
           <h1>My Reports</h1>
-          <button className="primary small" disabled>
+                    <button
+            className="primary small"
+            onClick={() => navigate('/reports/new')}
+          >
             Submit New Report
           </button>
         </div>

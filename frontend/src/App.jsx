@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import ReportForm from './pages/ReportForm'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -15,6 +16,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/reports/new"
+        element={
+          <ProtectedRoute>
+            <ReportForm />
           </ProtectedRoute>
         }
       />
