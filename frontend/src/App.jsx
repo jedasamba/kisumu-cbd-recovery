@@ -8,6 +8,7 @@ import ClaimItem from './pages/ClaimItem'
 import Messages from './pages/Messages'
 import QRCodePage from './pages/QRCodePage'
 import PublicItem from './pages/PublicItem'
+import Notifications from './pages/Notifications'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path="/claim/:matchId" element={<ProtectedRoute><ClaimItem /></ProtectedRoute>} />
       <Route path="/messages/:matchId" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
       <Route path="/qr/:reportId" element={<ProtectedRoute><QRCodePage /></ProtectedRoute>} />
+      <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
     </Routes>
   )

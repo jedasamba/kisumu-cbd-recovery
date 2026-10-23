@@ -9,6 +9,7 @@ function Dashboard() {
   const navigate = useNavigate()
   const user = getUser()
   const [reports, setReports] = useState([])
+  const [unread, setUnread] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -27,7 +28,16 @@ function Dashboard() {
       }
       setLoading(false)
     }
+
+    async function loadUnread() {
+      const res = await apiGet('notifications.php', getToken())
+      if (res.ok) {
+        setUnread(res.data.unread_count)
+      }
+    }
+
     loadReports()
+    loadUnread()
   }, [])
 
   function handleLogout() {
@@ -43,6 +53,9 @@ function Dashboard() {
       <div className="navbar">
         <span className="brand">Kisumu CBD Recovery</span>
         <div className="nav-right">
+          <button className="link-button" onClick={() => navigate('/notifications')}>
+            Notifications{unread > 0 ? ' (' + unread + ')' : ''}
+          </button>
           <span>{user && user.full_name}</span>
           <button className="link-button" onClick={handleLogout}>Logout</button>
         </div>
