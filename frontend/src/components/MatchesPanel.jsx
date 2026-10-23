@@ -31,7 +31,17 @@ function MatchesPanel() {
 
   function renderAction(m) {
     if (m.status === 'Verified') {
-      return <span className="badge verified">Verified</span>
+      return (
+        <div>
+          <span className="badge verified">Verified</span>{' '}
+          <button
+            className="primary small"
+            onClick={() => navigate('/messages/' + m.match_id)}
+          >
+            Message
+          </button>
+        </div>
+      )
     }
     if (m.status === 'Flagged') {
       return <p style={noteStyle}>Claim locked. An admin will review it.</p>
