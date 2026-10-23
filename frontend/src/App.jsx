@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ReportForm from './pages/ReportForm'
 import AdminDashboard from './pages/AdminDashboard'
+import ClaimItem from './pages/ClaimItem'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
@@ -12,30 +13,10 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/reports/new"
-        element={
-          <ProtectedRoute>
-            <ReportForm />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute role="admin">
-            <AdminDashboard />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/reports/new" element={<ProtectedRoute><ReportForm /></ProtectedRoute>} />
+      <Route path="/claim/:matchId" element={<ProtectedRoute><ClaimItem /></ProtectedRoute>} />
+      <Route path="/admin" element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
     </Routes>
   )
 }
