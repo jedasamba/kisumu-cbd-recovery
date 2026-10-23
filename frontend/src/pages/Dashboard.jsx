@@ -71,7 +71,17 @@ function Dashboard() {
             <div className="column">
               <h3>My Found Item Reports</h3>
               {found.length === 0 && <p className="empty">No found item reports yet.</p>}
-              {found.map((r) => <ReportCard key={r.report_id} report={r} />)}
+              {found.map((r) => (
+                <div key={r.report_id}>
+                  <ReportCard report={r} />
+                  <button
+                    className="small-btn"
+                    onClick={() => navigate('/qr/' + r.report_id)}
+                  >
+                    View QR code
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         )}
