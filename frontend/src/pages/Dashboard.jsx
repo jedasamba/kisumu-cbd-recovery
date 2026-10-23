@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { apiGet } from '../api'
 import { getToken, getUser, logout } from '../auth'
 import ReportCard from '../components/ReportCard'
+import MatchesPanel from '../components/MatchesPanel'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -13,87 +14,68 @@ function Dashboard() {
 
   useEffect(() => {
     async function loadReports() {
-      try {
-        const result = await apiGet('reports.php', getToken())
-
-        // An expired or invalid token sends the user back to log in
-        if (result.status === 401) {
-          logout()
-          navigate('/login')
-          return
-        }
-        if (result.ok) {
-          setReports(result.data.reports)
-        } else {
-          setError(result.data.error || 'Could not load your reports')
-        }
-      } catch {
-        setError('Could not reach the server. Check that Apache is running.')
+      const res = await apiGet('reports.php', getToken())
+      if (res.status === 401) {
+        logout()
+        navigate('/login')
+        return
+      }
+      if (!res.ok) {
+        setError('Could not load your reports.')
+      } else {
+        setReports(res.data.reports)
       }
       setLoading(false)
     }
-
     loadReports()
-  }, [navigate])
+  }, [])
 
   function handleLogout() {
     logout()
     navigate('/login')
   }
 
-  const lostReports = reports.filter((r) => r.report_type === 'lost')
-  const foundReports = reports.filter((r) => r.report_type === 'found')
+  const lost = reports.filter((r) => r.report_type === 'lost')
+  const found = reports.filter((r) => r.report_type === 'found')
 
   return (
     <div>
-      <header className="navbar">
+      <div className="navbar">
         <span className="brand">Kisumu CBD Recovery</span>
         <div className="nav-right">
-          <span>{user.full_name}</span>
-          <button className="link-button" onClick={handleLogout}>
-            Logout
-          </button>
+          <span>{user && user.full_name}</span>
+          <button className="link-button" onClick={handleLogout}>Logout</button>
         </div>
-      </header>
+      </div>
 
-      <main className="content">
+      <div className="content">
         <div className="content-header">
-          <h1>My Reports</h1>
-          <button
-            className="primary small"
-            onClick={() => navigate('/reports/new')}
-          >
+          <h2>My Reports</h2>
+          <button className="primary small" onClick={() => navigate('/reports/new')}>
             Submit New Report
           </button>
         </div>
 
-        {error && <p className="message error">{error}</p>}
-        {loading && <p>Loading your reports...</p>}
+        {loading && <p>Loading...</p>}
+        {error && <div className="message error">{error}</div>}
+
+        <MatchesPanel />
 
         {!loading && !error && (
           <div className="columns">
-            <section className="column">
-              <h2>My Lost Item Reports</h2>
-              {lostReports.length === 0 && (
-                <p className="empty">No lost item reports yet.</p>
-              )}
-              {lostReports.map((report) => (
-                <ReportCard key={report.report_id} report={report} />
-              ))}
-            </section>
-
-            <section className="column">
-              <h2>My Found Item Reports</h2>
-              {foundReports.length === 0 && (
-                <p className="empty">No found item reports yet.</p>
-              )}
-              {foundReports.map((report) => (
-                <ReportCard key={report.report_id} report={report} />
-              ))}
-            </section>
+            <div className="column">
+              <h3>My Lost Item Reports</h3>
+              {lost.length === 0 && <p className="empty">No lost item reports yet.</p>}
+              {lost.map((r) => <ReportCard key={r.report_id} report={r} />)}
+            </div>
+            <div className="column">
+              <h3>My Found Item Reports</h3>
+              {found.length === 0 && <p className="empty">No found item reports yet.</p>}
+              {found.map((r) => <ReportCard key={r.report_id} report={r} />)}
+            </div>
           </div>
         )}
-      </main>
+      </div>
     </div>
   )
 }
