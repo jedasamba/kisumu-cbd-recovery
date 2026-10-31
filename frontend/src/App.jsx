@@ -9,6 +9,7 @@ import ClaimItem from './pages/ClaimItem'
 import Messages from './pages/Messages'
 import QRCodePage from './pages/QRCodePage'
 import PublicItem from './pages/PublicItem'
+import PublicDashboard from './pages/PublicDashboard'
 import Notifications from './pages/Notifications'
 import ProtectedRoute from './components/ProtectedRoute'
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/recovery" element={<PublicDashboard />} />
       <Route path="/item/:reportId" element={<PublicItem />} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/reports/new" element={<ProtectedRoute><ReportForm /></ProtectedRoute>} />
