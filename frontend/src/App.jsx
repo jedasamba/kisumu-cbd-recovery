@@ -3,6 +3,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ReportForm from './pages/ReportForm'
+import SearchItems from './pages/SearchItems'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminHeatmap from './pages/AdminHeatmap'
 import AdminClaims from './pages/AdminClaims'
@@ -24,6 +25,7 @@ function App() {
       <Route path="/item/:reportId" element={<PublicItem />} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/reports/new" element={<ProtectedRoute><ReportForm /></ProtectedRoute>} />
+      <Route path="/search" element={<ProtectedRoute><SearchItems /></ProtectedRoute>} />
       <Route path="/claim/:matchId" element={<ProtectedRoute><ClaimItem /></ProtectedRoute>} />
       <Route path="/messages/:matchId" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
       <Route path="/qr/:reportId" element={<ProtectedRoute><QRCodePage /></ProtectedRoute>} />

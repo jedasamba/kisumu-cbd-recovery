@@ -53,6 +53,9 @@ function Dashboard() {
       <div className="navbar">
         <span className="brand">Kisumu CBD Recovery</span>
         <div className="nav-right">
+          <button className="link-button" onClick={() => navigate('/search')}>
+            Search Found Items
+          </button>
           <button className="link-button" onClick={() => navigate('/notifications')}>
             Notifications{unread > 0 ? ' (' + unread + ')' : ''}
           </button>
