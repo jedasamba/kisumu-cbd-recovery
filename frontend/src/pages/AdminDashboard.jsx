@@ -129,6 +129,9 @@ function AdminDashboard() {
       <header className="navbar">
         <span className="brand">Administrator Dashboard</span>
         <div className="nav-right">
+          <button className="link-button" onClick={() => navigate('/admin/claims')}>
+            Flagged Claims
+          </button>
           <button className="link-button" onClick={() => navigate('/admin/heatmap')}>
             Heatmap
           </button>
