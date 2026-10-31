@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import ReportForm from './pages/ReportForm'
 import AdminDashboard from './pages/AdminDashboard'
+import AdminHeatmap from './pages/AdminHeatmap'
 import ClaimItem from './pages/ClaimItem'
 import Messages from './pages/Messages'
 import QRCodePage from './pages/QRCodePage'
@@ -25,6 +26,7 @@ function App() {
       <Route path="/qr/:reportId" element={<ProtectedRoute><QRCodePage /></ProtectedRoute>} />
       <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
+      <Route path="/admin/heatmap" element={<ProtectedRoute role="admin"><AdminHeatmap /></ProtectedRoute>} />
     </Routes>
   )
 }
